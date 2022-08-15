@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- main css -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- framework -->
+  <link rel="stylesheet" href="css/wspace.css">
+  <!-- scss -->
+  <link rel="stylesheet" href="scss/begin.css">
+  <!-- ion icons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Jquery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- GOOGLE ICONS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <title>Timer - App</title>
+  <meta property="og:title" content="Time app">
+</head>
+<body class="light first-color">
+<div class="main-color"></div>
+<!-- aside  -->
+<aside>
+    <ul class="aside--list flex fd-col">
+    <li class="aside--list-item cursor text-center">
+        <a href="home.html">
+        <ion-icon name="home-outline" class="aside--item-icon"></ion-icon>
+        <p class="aside--item-subtitle line-clamp">Home</p>
+        </a>
+    </li>
+    <li class="aside--list-item cursor text-center">
+        <a href="count.html">
+        <ion-icon name="hourglass-outline" class="aside--item-icon"></ion-icon>
+        <p class="aside--item-subtitle line-clamp">Countdown</p>
+        </a>
+    </li>
+    <li class="aside--list-item cursor text-center active">
+        <a href="stop.html">
+        <ion-icon name="stopwatch-outline" class="aside--item-icon"></ion-icon>
+        <p class="aside--item-subtitle line-clamp">Stopwatch</p>
+        </a>
+    </li>
+    </ul>
+</aside>
+    <!-- MAIN CONTENT -->
+    <main class="stop">
+        <!-- header part -->
+        <header class="bb-50">
+            <ul class="header--list flex align-center flex-between">
+                <!-- left header -->
+                <li class="header--left">
+                    <h3 class="header--title p-100">Stopwatch</h3>
+                </li>
+                <!-- right header -->
+                <li class="header--right relative flex align-center">
+                    <div class="header--sett-btn b-100 flex align-center pdx-15 cursor user-none">
+                        <ion-icon name="settings-outline" class="header--icon pdr-15 i-50 header--sett-icon"></ion-icon>
+                        <span class="p-100 pdr-15 d-hidden">Settings</span>
+                        <ion-icon name="caret-down-outline" class="header--icon p-50 d-hidden"></ion-icon>
+                    </div>
+                    <!-- header dropdown menu -->
+                    <ul class="header--menu absolute w-100 b-50">
+                        <li class="header--dark bb-100 pd-15 flex align-center flex-between">
+                            <h6 class="p-50 fw-500">Dark</h6>
+                            <label for="act" class="switch-label">
+                                <input type="checkbox" class="switch-check-box" id="act">
+                                <div class="correct-switch"></div>
+                            </label>
+                        </li>
+                        <li class="header--theme pd-15">
+                            <h6 class="p-50 fw-500 mgb-half-1rem">Theme Color</h6>
+                            <div class="header--colors flex align-center">
+                                <div class="color flex active align-center justify-center active" data-color="first-color">
+                                    <ion-icon name="checkmark-outline" class="header--menu-check w-color"></ion-icon>
+                                </div>
+
+                                <div class="color flex align-center justify-center mgl-half-1rem" data-color="second-color">
+                                    <ion-icon name="checkmark-outline" class="header--menu-check w-color"></ion-icon>
+                                </div>
+
+                                <div class="color flex align-center justify-center mgl-half-1rem" data-color="third-color">
+                                    <ion-icon name="checkmark-outline" class="header--menu-check w-color"></ion-icon>
+                                </div>
+
+                                <div class="color flex align-center justify-center mgl-half-1rem"
+                                data-color="fourth-color">
+                                <ion-icon name="checkmark-outline" class="header--menu-check w-color"></ion-icon></div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+        <!-- stop watch section -->
+        <section class="stop--section flex align-center justify-center bb-100 fd-col">
+            <div id="stopwatch" class="full-width flex align-center justify-center"><h2 class="p-100" id="mainStop">00:00:00</h2></div>
+            <!-- stop control -->
+            <div class="stop--control flex align-center justify-center full-width">
+                <!-- reset btn -->
+                <div class="ctrl--btn cursor reset--stop relative p-50" id="reSTop">
+                    <ion-icon name="refresh-outline" class="ctrl--icon"></ion-icon>
+                    <div class="hov--reset absolute">Restart</div>
+                </div>
+                <!-- play & pause -->
+                <div class="ctrl--tim timing--stop relative p-50 mgx-2rem main-color w-color flex align-center justify-center">
+                    <!-- start btn -->
+                    <div class="ctrl--timing pl cursor flex align-center justify-center w-color" style="height: 100%;width: 100%;" id="playStop">
+                        <ion-icon name="play" class="ctrl--icon"></ion-icon>
+                    </div>
+                    <!-- pause btn -->
+                    <div class="ctrl--timing cursor ps flex align-center justify-center w-color d-none" id="pauseStop" style="height: 100%;width: 100%;">
+                        <ion-icon name="pause" class="ctrl--icon"></ion-icon>
+                    </div>
+                </div>
+                <!-- full screen -->
+                <div class="ctrl--btn cursor full--stop relative p-50">
+                    <!-- start btn -->
+                    <div class="ctrl--full enter relative" style="height: 100%;width: 100%;">
+                        <ion-icon name="expand-outline" class="ctrl--icon"></ion-icon>
+                        <div class="hov--enter absolute">Enter FS</div>
+                    </div>
+                    <!-- pause btn -->
+                    <div class="ctrl--full exit relative d-none" style="height: 100%;width: 100%;">
+                        <ion-icon name="contract" class="ctrl--icon"></ion-icon>
+                        <div class="hov--exit absolute">Exit FS</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="stop--history">
+            <!-- title -->
+            <div class="up--hist d-none" data-hidden="true"><h3 class="p-100">History</h3></div>
+            <!-- clear history -->
+            <!-- table content -->
+            <div class="table--empty pdy-30 text-center d-none">
+                <p class="p-50" style="font-size: .875rem;">Your history appears here</p>
+            </div>
+            <div class="table--container">
+                <table>
+                    <!-- table info header -->
+                    <tr class="tab--head p-50 bb-50 d-none" data-hidden="true">
+                        <td class="tab--data rank pdx-15">#</td>
+                        <td class="tab--data name">Name</td>
+                        <td class="tab--data temp">Duration</td>
+                        <td class="tab--data dat">Date</td>
+                        <td class="tab--data more"></td>
+                    </tr>
+                    <!-- table cell time -->
+                    <tbody class="tb--row">
+                    </tbody>
+                </table>
+            </div>
+            <div class="clear--hist flex align-center justify-end pdy-10 d-none" data-hidden="true">
+                <button class="bg-none main-text btn" id="clearHist">Clear history</button>
+            </div>
+        </section>
+    </main>
+<!-- START WITH POPUPS -->
+    <div class="popups">
+        <div class="add-succ fixed flex align-center pdy-15 pdx-15 pop-me" style="z-index: 9999;" id="add-succ">
+            <i class="fa fa-check-circle"></i>
+            <span class="p-mid pdl-15">added successfully</span>
+        </div>
+        <div class="save-succ fixed flex align-center pdy-15 pdx-15 pop-me" style="z-index: 9999;" id="save-succ">
+            <i class="fa fa-check-circle"></i>
+            <span class="p-mid pdl-15">Saved successfully</span>
+        </div>
+        <div class="del-succ fixed flex align-center pdy-15 pdx-15 pop-me" style="z-index: 9999;" id="del-succ">
+            <i class="fa fa-check-circle"></i>
+            <span class="p-mid pdl-15">Deleted successfully</span>
+        </div>
+     </div>
+</body>
+<script src="js/stop.js"></script>
+</html>

@@ -1,0 +1,202 @@
+/* Variables */
+@import 'functions';
+
+// colors
+// 
+$aside-icon-color: #9FA8B5;
+$aside-bg: #303640;
+
+// fonts
+// 
+$font-x-small: rem(12);
+$font-small: rem(13);
+$font-medium: rem(14);
+$font-medium-2: rem(15);
+$font-big: rem(16);
+$font-large: rem(17);
+
+
+// LIGHT & DARK THEME
+// 
+// LIGHT THEME
+.light {
+    background-color: #ffffff;
+    .danger {
+        color: #d11235;
+        border-left: 2px solid #d11235;
+    }
+    .p-50 {
+        color: #808080;
+    }
+    .p-75 {
+        color: #2a2a2a;
+    }
+    .p-100 {
+        color: #1a1a1a;
+    }
+    .w-50 {
+        background-color: #fbfbfb;
+    }
+    .w-75 {
+        background-color: #f7f7f7f1;
+    }
+    .w-80 {
+        background-color: #f7f7f7f1;
+    }
+    .w-90 {
+        background-color: #fcfcfc;
+    }
+    .w-100 {
+        background-color: #fff;
+    }
+    .b-75 {
+        border: 1px solid #c7c7c7;
+    }
+    .b-50 {
+        border: 1px solid #ededed;
+    }
+    .b-100 {
+        border: 1px solid #e5e5e5;
+    }
+    .bb-50 {
+        border-bottom: 1px solid #ededed;
+    }
+    .bb-100 {
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .i-50 {
+        color: #7e7e7e;
+    }
+    .border-bg-50 {
+        background-color: #ededed;
+    }
+    .switch-label {
+        --bg-off: #ddd;
+        --main-bg-off: rgb(193, 193, 193);
+        --bg-on: #c7e8ff;
+        --main-bg-on: #0f8cfa;
+    }
+}
+// DARK THEME
+.dark {
+    background-color: #1b1e3d;
+    .danger {
+        color: #FC4F4F;
+        border-left: 2px solid #FC4F4F;
+    }
+    .p-50 {
+        color: #8491c7;
+    }
+    .p-75 {
+        color: #f1f1f1;
+    }
+    .p-100 {
+        color: #ffff;
+    }
+    .w-50 {
+        background-color: #22244d;
+    }
+    .w-75 {
+        background-color: #1b1e3d;
+    }
+    .w-80 {
+        background-color: #22244d;
+    }
+    .w-90 {
+        background-color: #1b1e3d;
+    }
+    .w-100 {
+        background-color: #22244d;
+    }
+    .b-50 {
+        border: 1px solid #2b2f62;
+    }
+    .b-75 {
+        border: 1px solid #2e3369;
+    }
+    .b-100 {
+        border: 1px solid #2b2f62;
+    }  
+    .bb-50 {
+        border-bottom: 1px solid #1b254a;
+    }
+    .bb-100 {
+        border-bottom: 1px solid #2b2f62;
+    }
+    .i-50 {
+        color: #8491c7;
+    }  
+    .border-bg-50 {
+        background-color: #2b2f62;
+    } 
+    .switch-label {
+        --bg-off: #ddd;
+        --main-bg-off: rgb(193, 193, 193);
+        --bg-on: #c7e8ff;
+        --main-bg-on: #0f8cfa;
+    } 
+}
+
+// THEME COLORS
+// 
+// FIRST THEME
+.first-color {
+    .main-color {
+        background-color: #0f8cfa;
+        &:hover {
+            background-color: darken(#0f8cfa, 5);
+        }
+    }
+    .main-text{
+        color: #0f8cfa;
+    }
+    .main-border {
+        border-color: #0f8cfa !important;
+    }
+}
+// SECOND THEME
+.second-color {
+    .main-color {
+        background-color: #25bd5c;
+        &:hover {
+            background-color: darken(#25bd5c, 5);
+        }
+    }
+    .main-text{
+        color: #25bd5c;
+    }
+    .main-border {
+        border-color: #25bd5c !important;
+    }
+}
+// THIRD THEME
+.third-color {
+    .main-color {
+        background-color: #FF7A3C;
+        &:hover {
+            background-color: darken(#FF7A3C, 5);
+        }
+    }
+    .main-text{
+        color: #FF7A3C;
+    }
+    .main-border {
+        border-color: #FF7A3C !important;
+    }
+}
+// FOURTH THEME
+
+.fourth-color {
+    .main-color {
+        background-color: #FF7BAC;
+        &:hover {
+            background-color: darken(#FF7BAC, 5);
+        }   
+    }
+    .main-text{
+        color: #FF7BAC;
+    }
+    .main-border {
+        border-color: #FF7BAC !important;
+    }
+}

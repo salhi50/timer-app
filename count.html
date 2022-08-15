@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- main css -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- framework -->
+  <link rel="stylesheet" href="css/wspace.css">
+  <!-- scss -->
+  <link rel="stylesheet" href="scss/begin.css">
+  <!-- ion icons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Jquery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- GOOGLE ICONS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <title>Timer - App</title>
+  <meta property="og:title" content="Time app">
+</head>
+  <body class="light first-color">
+    <div class="main-color"></div>
+    <!-- aside  -->
+    <aside>
+      <ul class="aside--list flex fd-col">
+        <li class="aside--list-item cursor text-center">
+          <a href="home.html">
+            <ion-icon name="home-outline" class="aside--item-icon"></ion-icon>
+            <p class="aside--item-subtitle line-clamp">Home</p>
+          </a>
+        </li>
+        <li class="aside--list-item cursor text-center active">
+          <a href="count.html">
+            <ion-icon name="hourglass-outline" class="aside--item-icon"></ion-icon>
+            <p class="aside--item-subtitle line-clamp">Countdown</p>
+          </a>
+        </li>
+        <li class="aside--list-item cursor text-center">
+          <a href="stop.html">
+            <ion-icon name="stopwatch-outline" class="aside--item-icon"></ion-icon>
+          <p class="aside--item-subtitle line-clamp">Stopwatch</p>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <!-- main content -->
+    <main class="count">
+        <!-- header part -->
+        <header class="bb-50">
+            <ul class="header--list flex align-center flex-between">
+                <!-- left header -->
+                <li class="header--left">
+                    <h3 class="header--title p-100">Countdown</h3>
+                </li>
+                <!-- right header -->
+                <li class="header--right relative flex align-center">
+                    <div class="header--sett-btn b-100 flex align-center pdx-15 cursor user-none">
+                        <ion-icon name="settings-outline" class="header--icon pdr-15 i-50 header--sett-icon"></ion-icon>
+                        <span class="p-100 pdr-15 d-hidden">Settings</span>
+                        <ion-icon name="caret-down-outline" class="header--icon p-50 d-hidden"></ion-icon>
+                    </div>
+                    <!-- header dropdown menu -->
+                    <ul class="header--menu absolute w-100 b-50">
+                        <li class="header--dark bb-100 pd-15 flex align-center flex-between">
+                            <h6 class="p-50 fw-500">Dark</h6>
+                            <label for="act" class="switch-label">
+                                <input type="checkbox" class="switch-check-box" id="act">
+                                <div class="correct-switch"></div>
+                            </label>
+                        </li>
+                        <li class="header--theme pd-15">
+                            <h6 class="p-50 fw-500 mgb-half-1rem">Theme Color</h6>
+                            <div class="header--colors flex align-center">
+                                <div class="color flex active align-center justify-center active" data-color="first-color">
+                                    <ion-icon name="checkmark-outline" class="header--menu-check w-color"></ion-icon>
+                                </div>
+
+                                <div class="color flex align-center justify-center mgl-half-1rem" data-color="second-color">
+                                    <ion-icon name="checkmark-outline" class="header--menu-check w-color"></ion-icon>
+                                </div>
+
+                                <div class="color flex align-center justify-center mgl-half-1rem" data-color="third-color">
+                                    <ion-icon name="checkmark-outline" class="header--menu-check w-color"></ion-icon>
+                                </div>
+
+                                <div class="color flex align-center justify-center mgl-half-1rem"
+                                data-color="fourth-color">
+                                <ion-icon name="checkmark-outline" class="header--menu-check w-color"></ion-icon></div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+        <div class="count--container mgt-1rem">
+            <!-- count tabs -->
+            <div class="count--tabs user-none bb-50 main-pdx flex align-center">
+                <p class="count--tab p-50 active pdy-10 pdx-15 cursor main-border active main-text">Advanced</p>
+                <p class="count--tab p-50 pdy-10 pdx-15 cursor">Quick</p>
+            </div>
+            <!-- advanced countdown -->
+            <div class="count--advanced count--section">
+                <!-- empty elements -->
+                <div class="count--empty flex align-center justify-center fd-col d-none">
+                    <span class="material-symbols-outlined p-50 count--empty-icon">timer_off</span>
+                    <h6 class="p-75 fw-500 count--empty-head mgy-half-1rem">No advanced Countdown</h6>
+                    <p class="p-50 count--empty-sub">Click the down button to add one.</p>
+                </div>
+                <!-- advanced item box -->
+                <div class="main--count-advanced-container" id="mainCountdownContainer"></div>
+            </div>
+            <!-- quick countdown -->
+            <div class="count--quick count--section d-none">
+                <!-- empty elements -->
+                <div class="count--empty d-none flex align-center justify-center fd-col" id="quickEmpty">
+                    <span class="material-symbols-outlined p-50 count--empty-icon">history_toggle_off</span>
+                    <h6 class="p-75 fw-500 count--empty-head mgy-half-1rem">No Quick Countdown</h6>
+                    <p class="p-50 count--empty-sub">Click the down button to add one.</p>
+                </div>
+                <!-- advanced item box -->
+                <!--  -->
+                <!--  -->
+                <div class="count--quick-time flex flex-between fd-col">
+                    <div class="up--quick flex justify-end">
+                        <div class="icon--container b-50 flex align-center justify-center relative" id="details-icon">
+                            <ion-icon name="information" class="control--icon p-50"></ion-icon>  
+                            <div class="hover--icon absolute">Details</div>
+                        </div>
+                    </div>
+                    <div class="mid--quick flex fl-1 fd-col align-center justify-center pdy-30">
+                        <!-- MAIN BOXES -->
+                        <div class="quick--boxes flex flex-wrap">
+                            <div class="quick--box w-80 text-center">
+                                <h2 class="p-75">00</h2>
+                                <p class="p-50">years</p>
+                            </div>
+                            <div class="quick--box w-80 text-center">
+                                <h2 class="p-75">00</h2>
+                                <p class="p-50">days</p>
+                            </div>
+                            <div class="quick--box w-80 text-center">
+                                <h2 class="p-75">00</h2>
+                                <p class="p-50">hours</p>
+                            </div>
+                            <div class="quick--box w-80 text-center">
+                                <h2 class="p-75">00</h2>
+                                <p class="p-50">minutes</p>
+                            </div>
+                            <div class="quick--box w-80 text-center">
+                                <h2 class="p-75">00</h2>
+                                <p class="p-50">seconds</p>
+                            </div>
+                        </div>
+                        <div class="main--quick-control flex align-center full-width">
+                            <div class="line fl-1 border-bg-50"></div>
+                            <div class="quick--control b-50 pd-20 flex align-center fl-1">
+                                <div class="reset--btn flex align-center justify-center shrink-none mgr-2rem relative">
+                                    <ion-icon name="refresh-outline" class="control--icon p-50"></ion-icon>
+                                    <div class="hover--res absolute">Restart</div>
+                                </div>
+                                <div class="play--btn flex align-center justify-center shrink-none main-color w-color mgr-2rem">
+                                    <div style="height: 100%;width: 100%;" class="icon--contr-play flex align-center justify-center d-none relative">
+                                        <ion-icon name="play" class="control--icon"></ion-icon>
+                                        <div class="hover--play absolute">Continue</div>
+                                    </div>
+                                    <div style="height: 100%;width: 100%;" class="icon--contr-pause flex align-center justify-center relative">
+                                        <ion-icon name="pause" class="control--icon"></ion-icon>
+                                        <div class="hover--pause absolute">Pause</div>
+                                    </div>
+                                </div>
+                                <div class="delete--btn flex align-center justify-center shrink-none relative">
+                                    <ion-icon name="trash" class="control--icon p-50"></ion-icon>
+                                    <div class="hover--tr absolute">Delete</div>
+                                </div>
+                            </div>
+                            <div class="line fl-1 border-bg-50"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+
+    <!-- modals -->
+    <!-- modal select and add countdown -->
+    <div class="parent-modal pop--up hidded" id="parent-count-modal">
+        <div class="main-modal w-100 count--modal" id="main-count-modal">
+            <div class="count--select-modal pdt-20" id="count--select-modal">
+                <h2 class="count--select-title p-100 pdx-20">Choose a Countdown</h2>
+                <p class="p-50 count--select-description p-50 pdx-20">Each one has different features.</p>
+                <div class="count--select-container pdx-20 pdy-30 bb-100 grid">
+                    <!-- option to select -->
+                    <div class="count--select-option b-50 pd-10 flex align-center main-border" data-index="0">
+                        <!-- icon part -->
+                        <span class="material-symbols-outlined main-text count--select-icon">safety_check</span>
+                        <div class="count--option-details pdl-10">
+                            <h6 class="p-75 fw-500">Advanced Countdown</h6>
+                            <p class="p-50">You can add a Name, a thumbnail or a description to your countdown.</p>
+                        </div>
+                        <ion-icon name="checkmark-circle" class="absolute main-text count--select-abs-icon w-100"></ion-icon>
+                    </div>
+                    <div class="count--select-option b-50 pd-10 flex align-center" data-index="1">
+                        <!-- icon part -->
+                        <span class="material-symbols-outlined p-50 count--select-icon main-text">slow_motion_video</span>
+                        <div class="count--option-details pdl-10">
+                            <h6 class="p-75 fw-500">Quick Countdown</h6>
+                            <p class="p-50">You can add quickly your countdown without any details.</p>
+                        </div>
+                        <ion-icon name="checkmark-circle" class="absolute main-text count--select-abs-icon w-100"></ion-icon>
+                    </div>
+                </div>
+                <div class="count--select--btns flex align-center justify-end pdx-20 pdy-20">
+                    <button class="count--select-cancel btn main-btn p-50 w-90 mgr-1rem close--count-modal">Cancel</button>
+                    <!-- next button -->
+                    <button class="count--select-next main-color btn w-color main-btn" id="get-count-type">Next</button>
+                </div>
+            </div>
+
+            <!-- add advanced -->
+            <div class="count--advanced-modal count--global d-none">
+                <div class="count--advanced--modal-container flex flex-wrap bb-100">
+                    <div class="count--advanced-left div-50 res-div-100 b-100">
+                        <div class="count--advanced-tools full-width pd-20 bb-100">
+                            <span class="p-100 count--modal-subtitle">Advanced Countdown</span>
+                            <!-- select a specific date or time -->
+                            <div class="count--select-specific mgt-half-1rem">
+    
+    
+                                <label class="count--specific full-width flex align-center flex-between pd-10 pdx-20 cursor w-75 active label-radio" data-default="true">
+                                    <div class="count--specific-left flex align-center">
+                                        <div class="select-radio flex align-center">
+                                            <ion-icon name="checkmark-circle" class="main-text radio-icon"></ion-icon>
+                                        </div>
+                                        <span class="p-100 mgl-1rem cursor">Specific Date</span>
+                                    </div>
+    
+                                    <div class="count--specific-right">
+                                        <span class="material-symbols-outlined p-50">calendar_month</span>
+                                    </div>
+                                </label>
+    
+                                <!-- date options inputs -->
+                                <div class="count-specific-item pdy-20 grid test-me" id="dateOption" data-dateCount="true">
+                                    <div class="count-specific-input">
+                                        <input type="text" class="input--option-select b-50 p-100" id="dayInput" maxlength="2" placeholder="DD">
+                                    </div>
+                                    <div class="count-specific-input">
+                                        <select class="input--option-select caret b-100 w-100 p-100 select--input" id="monthInput">
+                                            <option value="Jan" selected>1 - January</option>
+                                            <option value="Feb">2 - February</option>
+                                            <option value="Mar">3 - March</option>
+                                            <option value="Apr">4 - April</option>
+                                            <option value="May">5 - May</option>
+                                            <option value="Jun">6 - June</option>
+                                            <option value="Jul">7 - July</option>
+                                            <option value="Aug">8 - August</option>
+                                            <option value="Sep">9 - September</option>
+                                            <option value="Oct">10 - October</option>
+                                            <option value="Nov">11 - November</option>
+                                            <option value="Dec">12 - December</option>
+                                        </select>
+                                    </div>
+                                    <div class="count-specific-input">
+                                        <input type="text" class="input--option-select b-100 p-100" id="yearInput" maxlength="4" placeholder="YYYY">
+                                    </div>
+                                        <div class="count-specific-input">
+                                            <input type="text" class="text-center input--option-select p-100 b-50" placeholder="HH" id="hoursTimer" maxlength="2">
+                                        </div>
+                                        <div class="count-specific-input">
+                                            <input type="text" class="text-center input--option-select p-100 b-50" id="minuteTimer" placeholder="MM" maxlength="2">
+                                        </div>
+                                        <div class="count-specific-input">
+                                            <input type="text" class="text-center input--option-select p-100 b-50" placeholder="SS" id="secondTimer" maxlength="2">
+                                        </div>
+                                </div>
+                                <label class="count--specific full-width flex align-center flex-between pd-10 pdx-20 cursor mgt-half-1rem w-75 label-radio">
+                                    <div class="count--specific-left flex align-center">
+                                        <div class="select-radio b-75 radio flex align-center">
+                                            <ion-icon name="checkmark-circle" class="main-text radio-icon"></ion-icon>
+                                        </div>
+                                        <span class="p-100 mgl-1rem cursor">Timer</span>
+                                    </div>
+    
+                                    <div class="count--specific-right">
+                                        <span class="material-symbols-outlined p-50">timer</span>
+                                    </div>
+                                </label>
+                            <!-- timer option inputs -->
+                            <div class="count-specific-item pdy-20 d-none" id="timerOption" data-timerCount="true">
+                                <div class="year--days grid">
+                                    <div class="count-specific-input">
+                                        <input type="text" class="text-center input--option-select p-100 b-50" id="yearTimer" maxlength="3" placeholder="YYY">
+                                    </div>
+                                    <div class="count-specific-input">
+                                        <input type="text" class="text-center input--option-select p-100 b-50" id="daysTimer" placeholder="DDD" maxlength="3">
+                                    </div>
+                                </div>
+                                <div class="min-h-sec grid mgt-half-1rem">
+                                    <div class="count-specific-input">
+                                        <input type="text" class="text-center input--option-select p-100 b-50" placeholder="HH" id="hoursTimer" maxlength="2">
+                                    </div>
+                                    <div class="count-specific-input">
+                                        <input type="text" class="text-center input--option-select p-100 b-50" id="minuteTimer" placeholder="MM" maxlength="2">
+                                    </div>
+                                    <div class="count-specific-input">
+                                        <input type="text" class="text-center input--option-select p-100 b-50" placeholder="SS" id="secondTimer" maxlength="2">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="remarque--container pd-20">
+                            <div class="count--remarque pd-15 main-border flex align-center w-75">
+                                <ion-icon name="alert-circle" class="shrink-none main-text remarque-icon self-start"></ion-icon>
+                                <p class="p-50 pdl-15 remarque--info fw-500">Y : year , D : day , H : hour , M : minute and S : second. If you don't need one of them type 0.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                    <div class="count--advanced-right div-50 res-div-100">
+                        <div class="count--right-tools full-width b-100 pdt-20">
+                            <span class="count--modal-subtitle p-100 pdx-20">Details</span>
+                            <div class="count--inputs-details mgt-half-1rem pdb-20 bb-100 pdx-20">
+                                <div class="count-input-item-details relative">
+                                    <input type="text" id="countName" class="input--details-section input-details b-50 p-100" maxlength="100">
+                                    <label for="" class="label--input-details absolute label-input p-50 w-100">Name</label>
+                                </div>
+                                <p class="p-50 count-input-subtitle mgb-1rem">Name your countdown</p>
+                                <div class="count-input-item-details relative">
+                                    <textarea name="" id="" class="input--details-section textarea-details p-100 b-50" maxlength="150"></textarea>
+                                    <label for="" class="label--textarea-details absolute label-input p-50 w-100">Description</label>
+                                    <p class="p-50 count-input-subtitle">
+                                        Write anything that describes the event that will happen</p>
+                                </div>
+                            </div>
+                            <div class="count--thumbnail-right pdy-20 pdx-20">
+                                <span class="count--modal-subtitle p-100">Thumbnail</span>
+                                <input type="file" class="d-none" name="" accept="image/*" id="origThumb">
+                                <!-- thumbnail choosed -->
+                                <div class="thumbnail--choosed relative d-none">
+                                    <img src="./" alt="" id="img--choosed">
+                                    <label class="w-color sec--btn label-thumb cursor absolute change--label" for="origThumb">
+                                        change
+                                    </label>    
+                                </div>
+                                <label class="btn main-color w-color main-btn flex align-center justify-center full-width label-thumb" for="origThumb" style="min-height: 50px !important;">
+                                    <span class="material-symbols-outlined">add_photo_alternate</span>
+                                    <span class="pdl-15">Add thumbnail</span>                            
+                                </label>
+                                <p class="p-50 count-input-subtitle">The thumbnail you choose will appear in Full Screen mode</p>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="count--advanced-err-container pd-20 bb-100 d-none" id="advanced-error">
+                    <div class="count--advanced-err danger w-75 pd-15 flex align-center">
+                        <div class="left--err self-start">
+                            <ion-icon name="alert-circle" class="count--err-icon"></ion-icon>
+                        </div>
+                        <div class="right--err pdl-15">
+                            <p class="count--err-subtitle">Oops! Something is missing. Make sure:</p>
+                        <ul class="count--err-menu flex flex-wrap">
+                            <li class="count--err-list mgx-1rem mgy-4">The date is valid.</li>
+                            <li class="count--err-list mgx-1rem mgy-4">All input fields are not empty.</li>
+                            <li class="count--err-list mgx-1rem mgy-4">You add a thumbnail for your countdown.</li>
+                            <li class="count--err-list mgx-1rem mgy-4">All countdown numbers are not equal to zero</li>
+                            <li class="count--err-list mgx-1rem mgy-4">Try to choose another thumbnail with less resolution.</li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="count--advanced-modal-btns flex align-center justify-end pdy-20 pdx-20 w-50">
+                        <button class="count--select-cancel btn main-btn p-50 w-90 mgr-1rem close--count-modal">Cancel</button>
+                        <!-- add button -->
+                        <button class="countdown--modal-add main-color btn w-color main-btn flex align-center justify-center" id="advanced-add">
+                            <span class="material-symbols-outlined">more_time</span>                   
+                            <span class="pdl-15">Add</span>                                           
+                        </button>
+                    </div>
+                </div>
+            <!-- add quick -->
+            <div class="count--quick-modal count--global d-none">
+                <!-- container quick -->
+                <!-- quick section -->
+                <!-- important -->
+                <div class="count--quick-container">
+                    <div class="count--quick--modal-container bb-100">
+                        <div class="count--quick-left pdb-20 pdx-20">
+                            <div class="count--quick-tools full-width pdy-20">
+                                <span class="p-100 count--modal-subtitle">Quick Countdown</span>
+                                <!-- select a specific date or time -->
+                                <div class="count--select-specific mgt-half-1rem">    
+                                <!-- timer -->
+                                <div class="count-quick-specific-item pdb-10" id="timerOption">
+                                    <div class="year--days grid">
+                                        <div class="count-specific-input">
+                                            <input type="text" class="text-center input--option-select p-100 b-50" id="yearTimer" maxlength="3" placeholder="YYY">
+                                        </div>
+                                        <div class="count-specific-input">
+                                            <input type="text" class="text-center input--option-select p-100 b-50" id="daysTimer" placeholder="DDD" maxlength="3">
+                                        </div>
+                                    </div>
+                                    <div class="min-h-sec grid mgt-half-1rem">
+                                        <div class="count-specific-input">
+                                            <input type="text" class="text-center input--option-select p-100 b-50" placeholder="HH" id="hoursTimer" maxlength="2">
+                                        </div>
+                                        <div class="count-specific-input">
+                                            <input type="text" class="text-center input--option-select p-100 b-50" id="minuteTimer" placeholder="MM" maxlength="2">
+                                        </div>
+                                        <div class="count-specific-input">
+                                            <input type="text" class="text-center input--option-select p-100 b-50" placeholder="SS" id="secondTimer" maxlength="2">
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="count--remarque pd-15 main-border flex align-center w-75">
+                                <ion-icon name="alert-circle" class="shrink-none main-text remarque-icon self-start"></ion-icon>
+                                <p class="p-50 pdl-15 remarque--info fw-500">Y : year , D : day , H : hour , M : minute and S : second. If you don't need one of them type 0.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="count--advanced-modal-btns flex align-center justify-end pdy-20 pdx-20 w-50">
+                            <button class="count--select-cancel btn main-btn p-50 w-90 mgr-1rem close--count-modal">Cancel</button>
+                            <!-- add button -->
+                            <button class="countdown--modal-add main-color btn w-color main-btn flex align-center justify-center" id="quick-add">
+                                <span class="material-symbols-outlined">more_time</span>                   
+                                <span class="pdl-15">Add</span>             
+                            </button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR VERIFICATION -->
+    <div class="parent-modal hidded" id="verificationParentModal">
+        <div class="main-modal w-100 verifModal" id="verificationMainModal">
+            <div class="up--verif-modal">
+                <h5 class="pd-15 fw-500 p-75">Delete Countdown</h5>
+            </div>
+            <div class="content--verif-modal pdb-30 pdx-15 bb-100">
+                <p class="p-50 verif--descr">Once you delete this countdown there is no going back.</p>
+            </div>
+            <div class="footer--verif pdy-10 flex align-center justify-end pdx-15">
+                <button class="count--verif-cancel btn main-btn p-50 w-90 mgr-1rem" id="closeVerif">Cancel</button>
+                <!-- confirme button -->
+                <button class="count--select-next main-color btn w-color main-btn" id="deleteVerif">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESCRIPTION COUNTDOWN -->
+    <div class="parent-modal hidded" id="descParentAdvanced">
+        <div class="main-modal w-100" id="descMainAdvanced">
+            <div class="up--descr flex align-center flex-between pd-20 bb-100">
+                <h3 class="p-100">Description</h3>
+                <ion-icon name="close-outline" class="p-100 icon--close-descr cursor"></ion-icon>
+            </div>
+            <div class="content--descri pdy-30 pdx-20">
+                <p class="main--adv-decr p-50" id="mainAdvDescr"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- edit countdown -->
+    <div class="parent-modal hidded" id="editParentAdvanced">
+        <div class="main-modal w-100" id="editMainAdvanced">
+            <div class="up--modal relative">
+                <input type="file" class="d-none" id="editThumb" accept="image/*">
+                <label for="editThumb" style="min-height: 30px !important;padding: .1rem 1rem !important;" class="btn main-btn flex align-center justify-center w-100 absolute br-pos-initial p-75">
+                    <ion-icon name="camera"></ion-icon>
+                    <span class="pdl-15">Change</span>
+                </label>
+            </div>
+            <div class="content--modal">
+                <div class="count--right-tools full-width b-100 pdt-20">
+                    <span class="count--modal-subtitle p-100 pdx-20">Edit Details</span>
+                    <div class="count--inputs-details mgt-half-1rem pdb-20 pdx-20">
+                        <div class="count-input-item-details relative">
+                            <input type="text" id="countName" class="input--details-section input-details b-50 p-100" maxlength="100">
+                            <label for="" class="label--input-details absolute label-input p-50 w-100">Name</label>
+                        </div>
+                        <div class="count-input-item-details relative mgt-1rem">
+                            <textarea name="" id="" class="input--details-section textarea-details p-100 b-50" maxlength="150"></textarea>
+                            <label for="" class="label--textarea-details absolute label-input p-50 w-100">Description</label>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class="footer--modal flex align-center pd-10">
+                <button class="count--edit-cancel btn main-btn p-50 w-90 mgr-1rem fl-1 full-width mgr-half-1rem" id="closeEdit">Cancel</button>
+                <!-- confirme button -->
+                <button class="count--select-next main-color btn w-color main-btn fl-1 full-width" id="saveEdit">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DELETE QUICK COUNTDOWN -->
+    <div class="parent-modal hidded" id="parentDeleteQuick">
+        <div class="main-modal w-100 quickModal" id="mainDeleteQuick">
+            <div class="up--verif-modal">
+                <h5 class="pd-15 fw-500 p-75">Delete Countdown</h5>
+            </div>
+            <div class="content--verif-modal pdb-30 pdx-15 bb-100">
+                <p class="p-50 verif--descr">Once you delete this countdown there is no going back.</p>
+            </div>
+            <div class="footer--verif pdy-10 flex align-center justify-end pdx-15">
+                <button class="count--verif-cancel btn main-btn p-50 w-90 mgr-1rem" id="closeQuickCount">Cancel</button>
+                <!-- confirme button -->
+                <button class="count--select-next main-color btn w-color main-btn" id="deleteQuickCount">Delete</button>
+            </div>
+        </div>
+    </div>
+    <!-- btn add countdown -->
+    <button class="count--add-btn main-color w-color btn fixed index-last flex align-center justify-center" id="new-count">
+            <ion-icon name="hourglass-outline" class="add-icon"></ion-icon>
+        <span class="pdl-15">New <span class="d-hidden">Countdown</span></span>
+    </button>
+
+    <!-- START WITH POPUPS -->
+    <div class="popups">
+        <div class="add-succ fixed flex align-center pdy-15 pdx-15 pop-me" style="z-index: 9999;" id="add-succ">
+          <i class="fa fa-check-circle"></i>
+          <span class="p-mid pdl-15">added successfully</span>
+        </div>
+        <div class="save-succ fixed flex align-center pdy-15 pdx-15 pop-me" style="z-index: 9999;" id="save-succ">
+          <i class="fa fa-check-circle"></i>
+          <span class="p-mid pdl-15">Saved successfully</span>
+        </div>
+        <div class="del-succ fixed flex align-center pdy-15 pdx-15 pop-me" style="z-index: 9999;" id="del-succ">
+          <i class="fa fa-check-circle"></i>
+          <span class="p-mid pdl-15">Deleted successfully</span>
+        </div>
+      </div>
+
+      <!-- QUICK COUNTDOWN DETAILS -->
+      <div class="parent-modal hidded" id="quickdetailsParent">
+        <div class="main-modal w-100" id="quickdetailsMain">
+            <div class="content--quick-details">
+                <h6 class="pd-20 p-100">Details</h6>
+                <ul>
+                    <li class="flex align-center flex-between pdy-10 pdx-20 b-100">
+                        <span class="p-100 fw-400 capital">date created</span>
+                        <span class="p-50 fw-400" id="dateCre">20 Aug, 2023</span>
+                    </li>
+                    <li class="flex align-center flex-between pdy-10 pdx-20 b-100">
+                        <span class="p-100 fw-400 capital">date ended</span>
+                        <span class="p-50 fw-400" id="dateEnd">22 Aug, 2023</span>
+                    </li>
+                    <li class="flex align-center flex-between pdy-10 pdx-20 b-100">
+                        <span class="p-100 fw-400 capital">Original Time</span>
+                        <span class="p-50 fw-400" id="dateOr">2000</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="quick--details-btn pd-20 flex justify-end">
+                <button class="close--det-quick btn main-btn p-50 w-90">Close</button>
+            </div>
+        </div>
+      </div>
+      <!-- FULL SCREEN -->
+    <div class="full--screen-mode w-75 flex align-center justify-center">
+        <div class="full-width">
+            <div class="full--container pdx-15 relative">
+                <!-- title -->
+                <div class="full--title">
+                    <h2 class="w-color">Let's Go</h2>
+                </div>
+                <!-- border -->
+                <div class="full--border"></div>
+                <!-- time -->
+                <div class="full--time grid">
+                    <div class="full--box w-color flex fd-col justify-center b-box-right">
+                        <h2>05</h2>
+                        <span>Years</span>
+                    </div>
+                    <div class="full--box w-color flex fd-col justify-center b-box-right">
+                        <h2>135</h2>
+                        <span>Days</span>
+                    </div>
+                    <div class="full--box w-color flex fd-col justify-center b-box-right">
+                        <h2>15</h2>
+                        <span>Hours</span>
+                    </div>
+                    <div class="full--box w-color flex fd-col justify-center b-box-right">
+                        <h2>35</h2>
+                        <span>Minutes</span>
+                    </div>
+                    <div class="full--box w-color flex fd-col justify-center">
+                        <h2>58</h2>
+                        <span>seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ion-icon name="close-outline" class="absolute w-color close--full-screen cursor"></ion-icon>
+
+    </div>
+  </body>
+  <script src="js/countdown.js"></script>
+</html>

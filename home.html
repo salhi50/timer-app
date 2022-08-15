@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Font Awesome 5 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- main css -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- framework -->
+  <link rel="stylesheet" href="css/wspace.css">
+  <!-- scss -->
+  <link rel="stylesheet" href="scss/begin.css">
+  <!-- JQUERY -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- ion icons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <title>Timer - App</title>
+  <meta property="og:title" content="Time app">
+</head>
+  <body class="main--page-home">
+    <div id="loader" class="index-last flex align-center justify-center fd-col">
+      <img src="images/loader.gif" alt="">
+    </div>
+    <!-- aside  -->
+    <aside>
+      <ul class="aside--list flex fd-col">
+        <li class="aside--list-item cursor text-center active">
+          <a href="home.html">
+            <ion-icon name="home-outline" class="aside--item-icon"></ion-icon>
+            <p class="aside--item-subtitle line-clamp">Home</p>
+          </a>
+        </li>
+        <li class="aside--list-item cursor text-center">
+          <a href="count.html">
+            <ion-icon name="hourglass-outline" class="aside--item-icon"></ion-icon>
+            <p class="aside--item-subtitle line-clamp">Countdown</p>
+          </a>
+        </li>
+        <li class="aside--list-item cursor text-center">
+          <a href="stop.html">
+            <ion-icon name="stopwatch-outline" class="aside--item-icon"></ion-icon>
+          <p class="aside--item-subtitle line-clamp">Stopwatch</p>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <div id="wrapper" class="d-none">
+    <!-- main content -->
+    <main class="home relative">
+      <div class="background-img absolute"></div>
+      <div class="home--container flex fd-col">
+        <!-- home header -->
+        <header class="flex align-center flex-between">
+          <div class="home--weather w-color flex align-center">
+            <img src="" id="weather" alt="">
+            <strong id="degree" style="white-space: nowrap;" class="pdr-10"></strong>
+            <span id="city" class="pdl-10 line-clamp"></span>
+          </div>
+
+          <div class="home--location flex align-center">
+            <img src="" id="country-avatar" alt="">
+            <span class="country-name d-hidden w-color pdl-10">Morocco</span>
+          </div>
+        </header>
+        <!-- time -->
+        <section class="fl-1 flex align-center justify-center w-color home--time-section">
+          <div class="home--clock-container text-center">
+            <h2 class="home--clock-now" id="clock-now"></h2>
+          </div>
+        </section>
+        <!-- date & other -->
+        <section class="home--dates grid">
+          <div class="home--date-group">
+            <span class="home--time-subtitle">Date (Miladi)</span>
+            <h2 class="home--time-now w-color" id="miladDate">Dec 20, 2022</h2>
+          </div>
+          <div class="home--date-group">
+            <span class="home--time-subtitle">Current Day</span>
+            <h2 class="home--time-now w-color" id="currDay"></h2>
+          </div>
+          <div class="home--date-group">
+            <span class="home--time-subtitle">Date (Hijri)</span>
+            <h2 class="home--time-now w-color" id="hijriDate">Dhuu hija 20, 1444</h2>
+          </div>
+          <div class="home--date-group">
+            <span class="home--time-subtitle">Current Season</span>
+            <div class="home--season flex align-center mgt-4">
+              <img src="" id="img-season" alt="">
+              <h2 class="home--time-now w-color" id="season"></h2>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    </div>
+  </body>
+<script src="js/timer.js"></script>
+<script src="js/apis.js"></script>
+</html>
